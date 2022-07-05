@@ -59,7 +59,7 @@ lazy_static = "1.4.0"
 libc = "0.2.126"
 lru = "0.7.7"
 mockall = "0.11.1"
-moka = { version = "0.8.5", features = ["future", "futures-util"] }
+moka = { version = "0.9.0", features = ["future", "futures-util"] }
 miette = { version = "5.1.0", features = ["fancy"] }
 mime = "0.3.16"
 multimap = "0.8.3"
@@ -113,7 +113,7 @@ sys-info = "0.9.1"
 thiserror = "1.0.31"
 tokio = { version = "1.19.2", features = ["full"] }
 tokio-util = { version = "0.7.3", features = ["net", "codec"] }
-tonic = { version = "0.6.2", features = ["transport", "tls"] }
+tonic = { version = "0.7.2", features = ["transport", "tls"] }
 tower = { version = "0.4.13", features = ["full"] }
 tower-http = { version = "0.3.4", features = ["trace", "cors", "compression-br", "compression-deflate", "compression-gzip", "decompression-br", "decompression-deflate", "decompression-gzip"] }
 tower-service = "0.3.2"
