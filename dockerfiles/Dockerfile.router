@@ -1,3 +1,4 @@
+# Stage 1: Downloader
 FROM debian:bullseye-slim AS downloader
 ARG ROUTER_RELEASE=latest
 ARG ARTIFACT_URL=
@@ -19,6 +20,7 @@ RUN if [ -z "${ARTIFACT_URL}"]; then \
     cd -; \
   fi
 
+# Stage 2: Distro
 FROM debian:bullseye-slim AS distro
 ARG DEBUG_IMAGE=false
 
@@ -47,6 +49,10 @@ RUN mkdir config schema
 
 # Copy configuration for docker image
 COPY dockerfiles/router.yaml config
+
+# Health Check Configuration
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost/health || exit 1
 
 LABEL org.opencontainers.image.authors="Apollo Graph, Inc. https://github.com/apollographql/router"
 LABEL org.opencontainers.image.source="https://github.com/apollographql/router"
